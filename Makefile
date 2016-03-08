@@ -86,6 +86,10 @@ endif
 CPPFLAGS += -I. -I$(TOPDIR)/include -I$(NET_LIB_PATH)
 LDFLAGS  += -L$(NET_LIB_PATH)
 
+ifeq ($(HAVE_TOMATOWARE),1)
+LDFLAGS += -L$(NET_LIB) -Wl,-static -static -static-libgcc -s
+endif
+
 SUBDIRS	= man/ $(NET_LIB_PATH)/
 
 NLIB	= -l$(NET_LIB_NAME)
